@@ -4,17 +4,11 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: 10.x
-      - name: npm install and build
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test
+          node-version: 10
+      - run: npm ci
+      - run: npm test
