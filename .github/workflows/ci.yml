@@ -17,7 +17,4 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-      - name: Tests
-        uses: ianwalter/puppeteer@v2.0.0
-        with:
-          args: npm test
+          npm run test
