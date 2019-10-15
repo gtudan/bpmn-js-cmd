@@ -22,6 +22,7 @@ const puppeteer = require('puppeteer');
         page.on('console', msg => console.log("BPMN-js: " + msg.text()));
 
         await page.goto(`file://${path.join(__dirname, 'index.html')}`);
+
         const svg = await page.$eval('#container', (container, bpmnXML) => {
             const viewer = new BpmnJS({container: '#container'});
             return new Promise((resolve, reject) => {
