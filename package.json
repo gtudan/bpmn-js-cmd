@@ -1,0 +1,21 @@
+{
+  "name": "bpmn-js.cli",
+  "version": "1.0.0",
+  "description": "A command line tool for rendering BPMN diagrams",
+  "main": "index.js",
+  "bin": "bpmn",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bpmn",
+    "cli"
+  ],
+  "author": "Gregor Tudan <gregor.tudan@cofinpro.de>",
+  "license": "ISC",
+  "dependencies": {
+    "bpmn-js": "^5.0.5",
+    "commander": "^3.0.2",
+    "puppeteer": "^1.20.0"
+  }
+}
