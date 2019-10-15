@@ -4,9 +4,9 @@ const path = require('path');
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 
-
 (async () => {
-    const bpmnXML = fs.readFileSync('diagram.bpmn', 'utf-8');
+
+    const bpmnXML = fs.promises.readFile('diagram.bpmn', 'utf-8');
 
     let browser;
     try {
@@ -44,16 +44,17 @@ const puppeteer = require('puppeteer');
                     }
                 });
             });
-        }, bpmnXML);
+        }, await bpmnXML);
 
-        const png = await page.screenshot({omitBackground: true, type: 'png'});
-        const jpeg = await page.screenshot({type: 'jpeg'});
-        const pdf = await page.pdf({landscape: true, format: 'a4', pageRange: 1, preferCSSPageSize: true});
-
-        fs.writeFileSync('diagram.png', png);
-        fs.writeFileSync('diagram.jpeg', jpeg);
-        fs.writeFileSync('diagram.svg', svg);
-        fs.writeFileSync('diagram.pdf', pdf);
+       await Promise.all([
+            fs.promises.writeFile('diagram.svg', svg),
+            page.screenshot({omitBackground: true, type: 'png'})
+                .then(png => fs.promises.writeFile('diagram.png', png)),
+            page.screenshot({type: 'jpeg'})
+                .then(jpeg =>  fs.promises.writeFile('diagram.jpeg', jpeg)),
+            page.pdf({landscape: true, format: 'a4', pageRange: 1, preferCSSPageSize: true})
+                .then(pdf => fs.promises.writeFile('diagram.pdf', pdf))
+        ]);
     } catch (e) {
         console.error('Failed to generate diagram', e);
     } finally {
