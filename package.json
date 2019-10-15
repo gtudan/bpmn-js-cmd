@@ -19,7 +19,6 @@
     "puppeteer": "^1.20.0"
   },
   "devDependencies": {
-    "bpmn-js": "^5.0.5",
     "mocha": "^6.2.1"
   }
 }

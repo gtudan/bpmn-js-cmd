@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const bpmnjs = require.resolve('bpmn-js');
 const puppeteer = require('puppeteer');
 
 async function renderDiagram(bpmnXML, options) {
@@ -18,8 +19,11 @@ async function renderDiagram(bpmnXML, options) {
 
         const page = await browser.newPage();
         page.on('console', msg => console.log("BPMN-js: " + msg.text()));
-
         await page.goto(`file://${path.join(__dirname, 'index.html')}`);
+
+        const bpmnJsDist = path.resolve(bpmnjs, '../dist');
+        await page.addScriptTag({path: path.resolve(bpmnJsDist, 'bpmn-viewer.production.min.js')});
+
         const svg = await page.$eval('#container', (container, bpmnXML) => {
             const viewer = new BpmnJS({container: '#container'});
             return new Promise((resolve, reject) => {
