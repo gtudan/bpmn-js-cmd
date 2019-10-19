@@ -1,4 +1,4 @@
-# BPMN-js.cli
+# BPMN-js-cmd
 
 A command line utility for rendering BPMN-Diagrams.
 
@@ -7,7 +7,7 @@ A command line utility for rendering BPMN-Diagrams.
 Install with NPM:
 
 ```sh 
-npm install -g bpmn-js.cli
+npm install -g bpmn-js-cmd
 ```
 
 ## Usage
