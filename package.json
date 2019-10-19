@@ -4,7 +4,7 @@
   "description": "A command line tool for rendering BPMN diagrams",
   "repository": "github:gtudan/bpmn-js.cli",
   "main": "index.js",
-  "bin": "bpmn",
+  "bin": "bpmn-js",
   "scripts": {
     "test": "mocha"
   },
@@ -15,9 +15,9 @@
   "author": "Gregor Tudan <gregor.tudan@cofinpro.de>",
   "license": "ISC",
   "dependencies": {
-    "bpmn-js": "^5.0.5",
-    "commander": "^3.0.2",
-    "puppeteer": "^1.20.0"
+    "bpmn-js": "^5.1.0",
+    "puppeteer": "^1.20.0",
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "mocha": "^6.2.1"
