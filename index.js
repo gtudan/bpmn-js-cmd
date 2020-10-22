@@ -49,7 +49,9 @@ async function renderDiagram(bpmnXML, options) {
                 height: options.height,
                 landscape: true,
                 deviceScaleFactor: 2
-            }
+            },
+            args: ['--no-sandbox'],
+            executablePath: process.env.CHROMIUM_PATH
         });
 
         const page = await browser.newPage();
