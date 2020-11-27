@@ -1,0 +1,10 @@
+/assets/
+/bpmn-viewer*.js
+/*.svg
+/*.png
+/*.pdf
+/*.jpeg
+
+.idea
+*.iml
+.github/
