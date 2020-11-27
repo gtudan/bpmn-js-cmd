@@ -49,7 +49,9 @@ async function renderDiagram(bpmnXML, options) {
                 height: options.height,
                 landscape: true,
                 deviceScaleFactor: 2
-            }
+            },
+            args: ['--no-sandbox'],
+            executablePath: process.env.CHROMIUM_PATH
         });
 
         const page = await browser.newPage();
@@ -137,7 +139,8 @@ if (require.main === module) {
 
     if (!options.output) {
         let baseName = path.parse(options.file).name;
-        options.output = `${baseName}.${options.type}`;
+        let directoryName = path.parse(options.file).dir;
+        options.output = `${directoryName}/${baseName}.${options.type}`;
     }
 
     const bpmnXML = fs.readFileSync(options.file, {encoding: 'utf-8'});
