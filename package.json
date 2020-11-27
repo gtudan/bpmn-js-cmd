@@ -1,6 +1,6 @@
 {
   "name": "bpmn-js-cmd",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A command line tool for rendering BPMN diagrams",
   "repository": "github:gtudan/bpmn-js-cmd",
   "main": "index.js",
